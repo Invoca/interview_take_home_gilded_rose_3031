@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../main'
-require_relative '../item'
 
 describe :Item do
   describe :NormalItems do
@@ -115,6 +114,11 @@ describe :Item do
         given: { sell_by: 10, price: 80 },
         want: { sell_by: 10, price: 80 },
       },
+      # the price is always 80 for gold coins
+      {
+        given: { sell_by: 10, price: 20 },
+        want: { sell_by: 10, price: 80 },
+      },
     ].each_with_index do |test_case, i|
       context "TestCase[#{i}] given #{test_case[:given]}" do
         it "returns #{test_case[:want]}" do
@@ -126,5 +130,4 @@ describe :Item do
       end
     end
   end
-
 end
