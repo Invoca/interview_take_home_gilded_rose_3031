@@ -1,3 +1,10 @@
+PRICE_MAXIMUM = 50
+PRICE_MINIMUM = 0
+
+SELL_BY_PAST = 0
+SELL_BY_NEAR = 6
+SELL_BY_FAR = 11
+
 class Inventory
 
   def initialize(items)
@@ -7,22 +14,22 @@ class Inventory
   def update_price
     @items.each do |item|
       if item.name != "Fine Art" and item.name != "Concert Tickets"
-        if item.price > 0
+        if item.price > PRICE_MINIMUM
           if item.name != "Gold Coins"
             item.price = item.price - 1
           end
         end
       else
-        if item.price < 50
+        if item.price < PRICE_MAXIMUM
           item.price = item.price + 1
           if item.name == "Concert Tickets"
-            if item.sell_by < 11
-              if item.price < 50
+            if item.sell_by < SELL_BY_FAR
+              if item.price < PRICE_MAXIMUM
                 item.price = item.price + 1
               end
             end
-            if item.sell_by < 6
-              if item.price < 50
+            if item.sell_by < SELL_BY_NEAR
+              if item.price < PRICE_MAXIMUM
                 item.price = item.price + 1
               end
             end
@@ -32,10 +39,10 @@ class Inventory
       if item.name != "Gold Coins"
         item.sell_by = item.sell_by - 1
       end
-      if item.sell_by < 0
+      if item.sell_by < SELL_BY_PAST
         if item.name != "Fine Art"
           if item.name != "Concert Tickets"
-            if item.price > 0
+            if item.price > PRICE_MINIMUM
               if item.name != "Gold Coins"
                 item.price = item.price - 1
               end
@@ -44,7 +51,7 @@ class Inventory
             item.price = item.price - item.price
           end
         else
-          if item.price < 50
+          if item.price < PRICE_MAXIMUM
             item.price = item.price + 1
           end
         end
