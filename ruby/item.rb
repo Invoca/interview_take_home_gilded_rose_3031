@@ -56,9 +56,9 @@ module Item
   # Depreciates to 0 after the concert
   # Price range is [0..50] inclusive
   class ConcertTickets < Base
-    appreciates 1
-    appreciates 1, after: 10
-    appreciates 1, after: 5
+    appreciates
+    appreciates after: 10
+    appreciates after: 5
     depreciates Float::INFINITY, after: 0
   end
 
@@ -83,8 +83,8 @@ module Item
   # Does not depreciate
   # Price range is [0..50] inclusive
   class FineArt < Base
-    appreciates 1
-    appreciates 1, after: 0
+    appreciates
+    appreciates after: 0
   end
 
   # Normal Items
@@ -95,7 +95,7 @@ module Item
   # by -2 after sell by expiration
   # Price range is [0..50] inclusive
   class NormalItem < Base
-    depreciates 1
-    depreciates 1, after: 0
+    depreciates
+    depreciates after: 0
   end
 end

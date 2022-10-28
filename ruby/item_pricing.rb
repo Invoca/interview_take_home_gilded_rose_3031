@@ -71,14 +71,14 @@ module Pricing
     # Adds an appreciating adjustment strategy to the item with the delta and optional after sell_by
     # @param [integer] delta price adjustment
     # @param [integer] after sell_by value
-    def appreciates(delta, after: nil)
+    def appreciates(delta = 1, after: nil)
       pricing << Adjustment.new(delta.abs, after: after)
     end
 
     # Adds a depreciating adjustment strategy to the item with the delta and optional after sell_by
     # @param [integer] delta price adjustment
     # @param [integer] after sell_by value
-    def depreciates(delta, after: nil)
+    def depreciates(delta = 1, after: nil)
       pricing << Adjustment.new(delta.abs * -1, after: after)
     end
   end
