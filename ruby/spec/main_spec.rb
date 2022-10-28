@@ -1,9 +1,10 @@
 require 'rspec'
 require_relative '../main'
+require_relative '../item'
 
 describe 'Inventory' do
   def add_item_and_update_price(name, sell_by, price)
-    items = [Item.new(name, sell_by, price)]
+    items = [Item.create(name, sell_by, price)]
     inventory = Inventory.new(items)
     inventory.update_price
     items.first
