@@ -1,6 +1,5 @@
 require 'rspec'
 require_relative '../main'
-require_relative '../item'
 
 describe :Inventory do
   describe '#update_items' do
