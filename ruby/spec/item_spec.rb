@@ -2,6 +2,14 @@ require 'rspec'
 require_relative '../main'
 
 describe :Item do
+  context "#to_s" do
+    it "prints the string equivalent of the item" do
+      item = Item.create('TestItem', 10, 20)
+
+      expect("#{item}").to eq("TestItem, 10, 20")
+    end
+  end
+
   describe :NormalItems do
     let(:item_name) { "Normal Item" }
 

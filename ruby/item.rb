@@ -45,6 +45,10 @@ module Item
       end
       @price = [min_price, [max_price, @price].min].max
     end
+
+    def to_s
+      "#{@name}, #{@sell_by}, #{@price}"
+    end
   end
 
   # Concert Tickets
